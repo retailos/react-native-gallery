@@ -220,6 +220,14 @@ export default class Gallery extends Component {
 
   renderPage(pageData, pageId, layout) {
     const { onViewTransformed, onTransformGestureReleased, ...other } = this.props;
+    const pageInt = parseInt(pageId)
+
+    if (pageInt && (pageInt < this.currentPage-5 || pageInt > this.currentPage+5)) {
+      return (
+        <View></View>
+      )
+    }
+
     return (
       <Image
         {...other}

@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/ldn0x7dc/react-native-gallery#readme",
   "dependencies": {
-    "react-native-transformable-image": "0.0.18",
+    "react-native-transformable-image": "retailos/react-native-transformable-image#b6eaced",
     "@ldn0x7dc/react-native-view-pager": "0.0.9",
     "react-native-gesture-responder": "0.1.1"
   }
