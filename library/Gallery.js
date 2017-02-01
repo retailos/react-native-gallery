@@ -109,22 +109,26 @@ export default class Gallery extends Component {
 
     this.imageResponder = {
       onStart: ((evt, gestureState) => {
-        this.getCurrentImageTransformer().onResponderGrant(evt, gestureState);
+        const transformer = this.getCurrentImageTransformer()
+        transformer && transformer.onResponderGrant(evt, gestureState);
       }),
       onMove: (evt, gestureState) => {
-        this.getCurrentImageTransformer().onResponderMove(evt, gestureState);
+        const transformer = this.getCurrentImageTransformer()
+        transformer && transformer.onResponderMove(evt, gestureState);
       },
       onEnd: (evt, gestureState) => {
-        this.getCurrentImageTransformer().onResponderRelease(evt, gestureState);
+        const transformer = this.getCurrentImageTransformer()
+        transformer && transformer.onResponderRelease(evt, gestureState);
       }
     }
   }
 
   shouldScrollViewPager(evt, gestureState) {
-    if (gestureState.numberActiveTouches > 1) {
+    const viewTransformer = this.getCurrentImageTransformer();
+
+    if (gestureState.numberActiveTouches > 1 || !viewTransformer) {
       return false;
     }
-    const viewTransformer = this.getCurrentImageTransformer();
     const space = viewTransformer.getAvailableTranslateSpace();
     const dx = gestureState.moveX - gestureState.previousMoveX;
 
