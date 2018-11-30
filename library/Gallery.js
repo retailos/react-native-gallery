@@ -226,11 +226,14 @@ export default class Gallery extends Component {
     const { onViewTransformed, onTransformGestureReleased, ...other } = this.props;
     const pageInt = parseInt(pageId)
 
-    if (pageInt && (pageInt < this.currentPage-5 || pageInt > this.currentPage+5)) {
-      return (
-        <View></View>
-      )
-    }
+    // This is blocking images from rendering
+    // because pageInt is wrong when netering the gallery
+    // after scrolling down the list
+    // if (pageInt && (pageInt < this.currentPage-5 || pageInt > this.currentPage+5)) {
+    //   return (
+    //     <View></View>
+    //   )
+    // }
 
     return (
       <Image
